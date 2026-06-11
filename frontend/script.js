@@ -1,5 +1,5 @@
-// အခြေခံ လေ့ကျင့်ရန် စာကြောင်း (က-အ, Space ခြားထားသည်)
-const lessonText = "က ခ ဂ ဃ င စ ဆ ဇ ဈ ည"; 
+// လက်ချောင်း အစုံသုံးရမည့် အခြေခံ စာလုံးများ လေ့ကျင့်ရန်
+const lessonText = "က ခ င စ ဆ တ န ပ ဖ မ ယ ရ လ ဝ သ ဟ အ"; 
 
 const completedTextSpan = document.getElementById('completed-text');
 const currentCharSpan = document.getElementById('current-char');
@@ -14,61 +14,59 @@ function updateDisplay() {
     const upcoming = lessonText.substring(currentIndex + 1);
 
     completedTextSpan.innerText = completed;
-    currentCharSpan.innerText = current === " " ? "␣" : current; // Space ဖြစ်နေလျှင် ␣ သင်္ကေတပြမည်
+    currentCharSpan.innerText = current === " " ? "␣" : current;
     upcomingTextSpan.innerText = upcoming;
 
-    highlightKey(current);
+    highlightKeyAndFinger(current);
 }
 
-// နှိပ်ရမည့် ခလုတ်ကို လင်းပြသည့် Function
-function highlightKey(char) {
-    // ယခင်လင်းနေသော ခလုတ်များကို ပိတ်မည်
-    document.querySelectorAll('kbd').forEach(kbd => {
-        kbd.classList.remove('highlight', 'correct-press', 'wrong-press');
-    });
+function highlightKeyAndFinger(char) {
+    // ယခင် လင်းနေသော ကီးဘုတ်နှင့် လက်ချောင်းများကို ပိတ်မည်
+    document.querySelectorAll('kbd').forEach(kbd => kbd.classList.remove('highlight'));
+    document.querySelectorAll('.finger').forEach(finger => finger.classList.remove('active'));
 
-    // လက်ရှိ နှိပ်ရမည့် ခလုတ်ကို ရှာပြီး လင်းပြမည်
+    // လက်ရှိ နှိပ်ရမည့် ခလုတ်ကို ရှာမည်
     const keyToHighlight = document.querySelector(`kbd[data-key="${char}"]`);
+    
     if (keyToHighlight) {
+        // ခလုတ်ကို မီးလင်းပြမည်
         keyToHighlight.classList.add('highlight');
+        
+        // ထိုခလုတ်ကို နှိပ်ရမည့် လက်ချောင်းအမည်ကို ယူမည် (ဥပမာ - "left-pinky")
+        const fingerId = keyToHighlight.getAttribute('data-finger');
+        
+        // သက်ဆိုင်ရာ လက်ချောင်းကိုပါ မီးလင်းပြမည် (Thumb ဆိုလျှင် နှစ်ဖက်လုံး လင်းပြနိုင်သည်)
+        if(fingerId === "thumb") {
+            document.querySelectorAll('#thumb').forEach(t => t.classList.add('active'));
+        } else {
+            const fingerToHighlight = document.getElementById(fingerId);
+            if (fingerToHighlight) {
+                fingerToHighlight.classList.add('active');
+            }
+        }
     }
 }
 
 inputField.addEventListener('input', (e) => {
-    const typedChar = e.data; // နောက်ဆုံး ရိုက်ထည့်လိုက်သော စာလုံး
+    const typedChar = e.data; 
     const targetChar = lessonText.charAt(currentIndex);
     
-    // User ရိုက်လိုက်တာက လိုချင်တဲ့ စာလုံးနဲ့ ထပ်တူကျလျှင်
     if (typedChar === targetChar) {
-        const activeKey = document.querySelector(`kbd[data-key="${targetChar}"]`);
-        if (activeKey) {
-            activeKey.classList.add('correct-press');
-        }
-
         currentIndex++;
         
-        // သင်ခန်းစာ ပြီးသွားလျှင်
         if (currentIndex >= lessonText.length) {
-            currentIndex = 0; // ပြန်စမည် (နောက်ပိုင်းတွင် Level 2 သို့ ကူးရန် ပြင်နိုင်သည်)
-            alert("ဂုဏ်ယူပါတယ်! ပထမဆင့် ပြီးဆုံးသွားပါပြီ။");
+            currentIndex = 0; 
+            alert("ဂုဏ်ယူပါတယ်! လက်ချောင်းစုံ လေ့ကျင့်မှု ပြီးဆုံးပါပြီ။");
         }
         
-        // နောက်တစ်လုံးသို့ ကူးမည် (အချိန်ခဏလေးဆွဲပြီးမှ ကူးမည်၊ သို့မှ အစိမ်းရောင်လင်းတာကို မြင်ရမည်)
         setTimeout(() => {
-            inputField.value = ''; // Input ကို ရှင်းထုတ်မည်
+            inputField.value = ''; 
             updateDisplay();
-        }, 150);
+        }, 100);
 
     } else {
-        // မှားနှိပ်မိလျှင်
-        const wrongKey = document.querySelector(`kbd[data-key="${typedChar}"]`);
-        if (wrongKey) {
-            wrongKey.classList.add('wrong-press');
-            setTimeout(() => wrongKey.classList.remove('wrong-press'), 200);
-        }
-        inputField.value = ''; // မှားရိုက်မိတာကို ရှင်းထုတ်မည်
+        inputField.value = ''; 
     }
 });
 
-// Website စတက်ချိန်တွင် ပထမဆုံးစာလုံးကို ပြင်ဆင်မည်
 updateDisplay();
