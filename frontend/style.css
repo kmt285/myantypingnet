@@ -1,151 +1,74 @@
 :root {
-    /* လက်ချောင်း အလိုက် အရောင်များ သတ်မှတ်ခြင်း */
-    --lp-color: #ff9ff3; /* Left Pinky (ပန်းရောင်) */
-    --lr-color: #feca57; /* Left Ring (ဝါရွှေရောင်) */
-    --lm-color: #ff6b6b; /* Left Middle (အနီနုရောင်) */
-    --li-color: #48dbfb; /* Left Index (အပြာနုရောင်) */
-    --thumb-color: #c8d6e5; /* Thumbs (ခဲရောင်) */
-    
-    --ri-color: #1dd1a1; /* Right Index (အစိမ်းနုရောင်) */
-    --rm-color: #ff9f43; /* Right Middle (လိမ္မော်ရောင်) */
-    --rr-color: #5f27cd; /* Right Ring (ခရမ်းရောင်) */
-    --rp-color: #54a0ff; /* Right Pinky (အပြာရောင်) */
+    --lp-color: #ff9ff3;
+    --lr-color: #feca57;
+    --lm-color: #ff6b6b;
+    --li-color: #48dbfb;
+    --thumb-color: #c8d6e5;
+    --ri-color: #1dd1a1;
+    --rm-color: #ff9f43;
+    --rr-color: #5f27cd;
+    --rp-color: #54a0ff;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Pyidaungsu', sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pyidaungsu', sans-serif; }
 
-body {
-    background-color: #f4f7f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
-}
+body { background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
 
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    width: 98%;
-    max-width: 950px;
-    text-align: center;
-}
+.container { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 98%; max-width: 950px; text-align: center; }
 
 h1 { font-size: 1.6rem; color: #2c3e50; margin-bottom: 20px; }
 
-.lesson-display {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #eef2f5;
-    border-radius: 12px;
-}
+.lesson-display { font-size: 2rem; margin-bottom: 20px; padding: 15px; background: #eef2f5; border-radius: 12px; line-height: 1.6; }
 
 #completed-text { color: #27ae60; }
-#current-char {
-    color: #fff;
-    background-color: #2c3e50;
-    padding: 2px 10px;
-    border-radius: 6px;
-}
+#current-char { color: #fff; background-color: #2c3e50; padding: 2px 10px; border-radius: 6px; }
 #upcoming-text { color: #95a5a6; }
 
-#hidden-input {
-    width: 50%;
-    padding: 10px;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 2px solid #bdc3c7;
-    border-radius: 8px;
-    outline: none;
-}
+#hidden-input { width: 50%; padding: 10px; font-size: 1.1rem; margin-bottom: 20px; text-align: center; border: 2px solid #bdc3c7; border-radius: 8px; outline: none; }
 
-/* Keyboard Styling */
-.keyboard {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: #dfe6e9;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-}
+.keyboard { display: flex; flex-direction: column; gap: 8px; background: #dfe6e9; padding: 15px; border-radius: 12px; margin-bottom: 25px; }
 
-.key-row {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-}
+.key-row { display: flex; justify-content: center; gap: 6px; }
 
 kbd {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    background: white;
-    border: 1px solid #b2bec3;
-    border-radius: 6px;
-    font-size: 1.2rem;
-    color: #2d3436;
-    box-shadow: 0 3px 0 #b2bec3;
-    transition: all 0.2s ease;
+    position: relative; /* စာလုံး၂လုံး ထပ်တင်ရန် အရေးကြီးသည် */
+    display: flex; justify-content: center; align-items: center;
+    width: 48px; height: 48px; background: white; border: 1px solid #b2bec3;
+    border-radius: 6px; color: #2d3436; box-shadow: 0 3px 0 #b2bec3;
+    transition: all 0.2s ease; cursor: default;
 }
 
-kbd.space-key { width: 350px; }
+kbd.space-key { width: 350px; font-size: 1.2rem; }
+kbd.shift-key { width: 75px; font-size: 1rem; color: #636e72; }
 
-/* နှိပ်ရမည့် ခလုတ်ကို အရောင်လင်းပြခြင်း */
-kbd.highlight[data-finger="left-pinky"] { background: var(--lp-color); color: #000; border-color: var(--lp-color); box-shadow: 0 3px 0 #d980ce, 0 0 10px var(--lp-color); transform: scale(1.1); }
-kbd.highlight[data-finger="left-ring"] { background: var(--lr-color); color: #000; border-color: var(--lr-color); box-shadow: 0 3px 0 #e1b14c, 0 0 10px var(--lr-color); transform: scale(1.1); }
-kbd.highlight[data-finger="left-middle"] { background: var(--lm-color); color: #fff; border-color: var(--lm-color); box-shadow: 0 3px 0 #e65c5c, 0 0 10px var(--lm-color); transform: scale(1.1); }
-kbd.highlight[data-finger="left-index"] { background: var(--li-color); color: #000; border-color: var(--li-color); box-shadow: 0 3px 0 #3bc3df, 0 0 10px var(--li-color); transform: scale(1.1); }
-kbd.highlight[data-finger="thumb"] { background: var(--thumb-color); color: #000; border-color: var(--thumb-color); box-shadow: 0 3px 0 #a4b0b6, 0 0 10px var(--thumb-color); transform: scale(1.05); }
+/* Shift စာလုံးကို ဘယ်ဘက် အပေါ်ထောင့်တွင် ထားမည် */
+.shift-char { position: absolute; top: 3px; left: 5px; font-size: 0.9rem; color: #b2bec3; }
+/* ပုံမှန်စာလုံးကို ညာဘက် အောက်ထောင့်တွင် ထားမည် */
+.normal-char { position: absolute; bottom: 3px; right: 5px; font-size: 1.2rem; font-weight: bold; }
 
-kbd.highlight[data-finger="right-index"] { background: var(--ri-color); color: #000; border-color: var(--ri-color); box-shadow: 0 3px 0 #18af86, 0 0 10px var(--ri-color); transform: scale(1.1); }
-kbd.highlight[data-finger="right-middle"] { background: var(--rm-color); color: #000; border-color: var(--rm-color); box-shadow: 0 3px 0 #e68d3a, 0 0 10px var(--rm-color); transform: scale(1.1); }
-kbd.highlight[data-finger="right-ring"] { background: var(--rr-color); color: #fff; border-color: var(--rr-color); box-shadow: 0 3px 0 #4f1db1, 0 0 10px var(--rr-color); transform: scale(1.1); }
-kbd.highlight[data-finger="right-pinky"] { background: var(--rp-color); color: #fff; border-color: var(--rp-color); box-shadow: 0 3px 0 #468be3, 0 0 10px var(--rp-color); transform: scale(1.1); }
+/* မီးလင်းသောအခါ စာလုံး ၂ လုံးလုံး ထင်ရှားသွားစေရန် */
+kbd.highlight .shift-char, kbd.highlight .normal-char { color: inherit; }
 
-/* Hands Guide Styling */
-.hands-container {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    margin-top: 10px;
-}
+/* Key Highlights */
+kbd.highlight[data-finger="left-pinky"] { background: var(--lp-color); color: #000; border-color: var(--lp-color); box-shadow: 0 3px 0 #d980ce; transform: scale(1.1); }
+kbd.highlight[data-finger="left-ring"] { background: var(--lr-color); color: #000; border-color: var(--lr-color); box-shadow: 0 3px 0 #e1b14c; transform: scale(1.1); }
+kbd.highlight[data-finger="left-middle"] { background: var(--lm-color); color: #fff; border-color: var(--lm-color); box-shadow: 0 3px 0 #e65c5c; transform: scale(1.1); }
+kbd.highlight[data-finger="left-index"] { background: var(--li-color); color: #000; border-color: var(--li-color); box-shadow: 0 3px 0 #3bc3df; transform: scale(1.1); }
 
-.hand {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    background: #ecf0f1;
-    padding: 15px;
-    border-radius: 20px;
-}
+kbd.highlight[data-finger="right-index"] { background: var(--ri-color); color: #000; border-color: var(--ri-color); box-shadow: 0 3px 0 #18af86; transform: scale(1.1); }
+kbd.highlight[data-finger="right-middle"] { background: var(--rm-color); color: #000; border-color: var(--rm-color); box-shadow: 0 3px 0 #e68d3a; transform: scale(1.1); }
+kbd.highlight[data-finger="right-ring"] { background: var(--rr-color); color: #fff; border-color: var(--rr-color); box-shadow: 0 3px 0 #4f1db1; transform: scale(1.1); }
+kbd.highlight[data-finger="right-pinky"] { background: var(--rp-color); color: #fff; border-color: var(--rp-color); box-shadow: 0 3px 0 #468be3; transform: scale(1.1); }
 
-.finger {
-    width: 25px;
-    border-radius: 15px;
-    background-color: #bdc3c7;
-    transition: all 0.2s ease;
-}
+kbd.highlight.shift-key { background: #34495e; color: white; border-color: #2c3e50; box-shadow: 0 3px 0 #2c3e50; transform: scale(1.05); }
 
-/* လက်ချောင်း အရှည်များ */
-.pinky { height: 45px; }
-.ring { height: 60px; }
-.middle { height: 70px; }
-.index { height: 60px; }
-.thumb { height: 40px; margin-bottom: -10px; } /* လက်မကို အောက်နည်းနည်း ချထားသည် */
+/* Hands */
+.hands-container { display: flex; justify-content: center; gap: 80px; margin-top: 10px; }
+.hand { display: flex; align-items: flex-end; gap: 6px; background: #ecf0f1; padding: 15px; border-radius: 20px; }
+.finger { width: 25px; border-radius: 15px; background-color: #bdc3c7; transition: all 0.2s ease; }
 
-/* လက်ချောင်းများ မီးလင်းခြင်း */
+.pinky { height: 45px; } .ring { height: 60px; } .middle { height: 70px; } .index { height: 60px; } .thumb { height: 40px; margin-bottom: -10px; }
+
 .finger.active#left-pinky { background-color: var(--lp-color); transform: translateY(-8px); }
 .finger.active#left-ring { background-color: var(--lr-color); transform: translateY(-8px); }
 .finger.active#left-middle { background-color: var(--lm-color); transform: translateY(-8px); }
