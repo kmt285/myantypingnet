@@ -3,67 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar Typing Basics</title>
+    <title>Myanmar Typing - Finger Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>မြန်မာလက်ကွက် အခြေခံ လေ့ကျင့်ရန်</h1>
+        <h1>စနစ်ကျသော မြန်မာလက်ကွက် အခြေခံ</h1>
         
         <div class="lesson-display">
             <span id="completed-text"></span>
             <span id="current-char">က</span>
-            <span id="upcoming-text"> ခ ဂ ဃ င</span>
+            <span id="upcoming-text"> ခ ဂ င စ ဆ</span>
         </div>
 
         <input type="text" id="hidden-input" autocomplete="off" autofocus placeholder="ဒီနေရာမှာ Click နှိပ်ပြီး စာစရိုက်ပါ...">
 
         <div class="keyboard" id="virtual-keyboard">
             <div class="key-row">
-                <kbd data-key="ဆ">ဆ</kbd>
-                <kbd data-key="တ">တ</kbd>
-                <kbd data-key="န">န</kbd>
-                <kbd data-key="မ">မ</kbd>
-                <kbd data-key="အ">အ</kbd>
-                <kbd data-key="ပ">ပ</kbd>
-                <kbd data-key="က">က</kbd>
-                <kbd data-key="င">င</kbd>
-                <kbd data-key="သ">သ</kbd>
-                <kbd data-key="စ">စ</kbd>
-                <kbd data-key="ဟ">ဟ</kbd>
-                <kbd data-key="ဪ">ဪ</kbd>
+                <kbd data-key="၁" data-finger="left-pinky">၁</kbd>
+                <kbd data-key="၂" data-finger="left-ring">၂</kbd>
+                <kbd data-key="၃" data-finger="left-middle">၃</kbd>
+                <kbd data-key="၄" data-finger="left-index">၄</kbd>
+                <kbd data-key="၅" data-finger="left-index">၅</kbd>
+                <kbd data-key="၆" data-finger="right-index">၆</kbd>
+                <kbd data-key="၇" data-finger="right-index">၇</kbd>
+                <kbd data-key="၈" data-finger="right-middle">၈</kbd>
+                <kbd data-key="၉" data-finger="right-ring">၉</kbd>
+                <kbd data-key="၀" data-finger="right-pinky">၀</kbd>
+                <kbd data-key="-" data-finger="right-pinky">-</kbd>
+                <kbd data-key="=" data-finger="right-pinky">=</kbd>
             </div>
             <div class="key-row">
-                <kbd data-key="ေ">ေ</kbd>
-                <kbd data-key="ျ">ျ</kbd>
-                <kbd data-key="ိ">ိ</kbd>
-                <kbd data-key="်">်</kbd>
-                <kbd data-key="ါ">ါ</kbd>
-                <kbd data-key="့">့</kbd>
-                <kbd data-key="ြ">ြ</kbd>
-                <kbd data-key="ု">ု</kbd>
-                <kbd data-key="ူ">ူ</kbd>
-                <kbd data-key="း">း</kbd>
-                <kbd data-key="ွ">ွ</kbd>
+                <kbd data-key="ဆ" data-finger="left-pinky">ဆ</kbd>
+                <kbd data-key="တ" data-finger="left-ring">တ</kbd>
+                <kbd data-key="န" data-finger="left-middle">န</kbd>
+                <kbd data-key="မ" data-finger="left-index">မ</kbd>
+                <kbd data-key="အ" data-finger="left-index">အ</kbd>
+                <kbd data-key="ပ" data-finger="right-index">ပ</kbd>
+                <kbd data-key="က" data-finger="right-index">က</kbd>
+                <kbd data-key="င" data-finger="right-middle">င</kbd>
+                <kbd data-key="သ" data-finger="right-ring">သ</kbd>
+                <kbd data-key="စ" data-finger="right-pinky">စ</kbd>
+                <kbd data-key="ဟ" data-finger="right-pinky">ဟ</kbd>
+                <kbd data-key="ဪ" data-finger="right-pinky">ဪ</kbd>
             </div>
             <div class="key-row">
-                <kbd data-key="ဖ">ဖ</kbd>
-                <kbd data-key="ထ">ထ</kbd>
-                <kbd data-key="ခ">ခ</kbd>
-                <kbd data-key="လ">လ</kbd>
-                <kbd data-key="ဘ">ဘ</kbd>
-                <kbd data-key="ည">ည</kbd>
-                <kbd data-key="ာ">ာ</kbd>
-                <kbd data-key="၊">၊</kbd>
-                <kbd data-key="။">။</kbd>
-                <kbd data-key="၏">၏</kbd>
+                <kbd data-key="ေ" data-finger="left-pinky">ေ</kbd>
+                <kbd data-key="ျ" data-finger="left-ring">ျ</kbd>
+                <kbd data-key="ိ" data-finger="left-middle">ိ</kbd>
+                <kbd data-key="်" data-finger="left-index">်</kbd>
+                <kbd data-key="ါ" data-finger="left-index">ါ</kbd>
+                <kbd data-key="့" data-finger="right-index">့</kbd>
+                <kbd data-key="ြ" data-finger="right-index">ြ</kbd>
+                <kbd data-key="ု" data-finger="right-middle">ု</kbd>
+                <kbd data-key="ူ" data-finger="right-ring">ူ</kbd>
+                <kbd data-key="း" data-finger="right-pinky">း</kbd>
+                <kbd data-key="ွ" data-finger="right-pinky">ွ</kbd>
             </div>
             <div class="key-row">
-                <kbd data-key=" " class="space-key">Space</kbd>
+                <kbd data-key="ဖ" data-finger="left-pinky">ဖ</kbd>
+                <kbd data-key="ထ" data-finger="left-ring">ထ</kbd>
+                <kbd data-key="ခ" data-finger="left-middle">ခ</kbd>
+                <kbd data-key="လ" data-finger="left-index">လ</kbd>
+                <kbd data-key="ဘ" data-finger="left-index">ဘ</kbd>
+                <kbd data-key="ည" data-finger="right-index">ည</kbd>
+                <kbd data-key="ာ" data-finger="right-index">ာ</kbd>
+                <kbd data-key="၊" data-finger="right-middle">၊</kbd>
+                <kbd data-key="။" data-finger="right-ring">။</kbd>
+                <kbd data-key="၏" data-finger="right-pinky">၏</kbd>
+            </div>
+            <div class="key-row">
+                <kbd data-key=" " data-finger="thumb" class="space-key">Space</kbd>
             </div>
         </div>
-    </div>
 
+        <div class="hands-container">
+            <div class="hand left-hand">
+                <div class="finger pinky" id="left-pinky"></div>
+                <div class="finger ring" id="left-ring"></div>
+                <div class="finger middle" id="left-middle"></div>
+                <div class="finger index" id="left-index"></div>
+                <div class="finger thumb" id="thumb"></div>
+            </div>
+            <div class="hand right-hand">
+                <div class="finger thumb" id="thumb"></div>
+                <div class="finger index" id="right-index"></div>
+                <div class="finger middle" id="right-middle"></div>
+                <div class="finger ring" id="right-ring"></div>
+                <div class="finger pinky" id="right-pinky"></div>
+            </div>
+        </div>
+
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
