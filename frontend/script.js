@@ -5,30 +5,46 @@ const wpmDisplay = document.getElementById('wpm');
 const accuracyDisplay = document.getElementById('accuracy');
 const restartBtn = document.getElementById('restart-btn');
 
-const sampleTexts = [
-    "မြန်မာနိုင်ငံသည် အရှေ့တောင်အာရှတွင် တည်ရှိသည်။",
-    "ကွန်ပျူတာ လက်ကွက်ကို မှန်ကန်စွာ ရိုက်တတ်ရန် အရေးကြီးပါသည်။",
-    "နည်းပညာ တိုးတက်လာသည်နှင့်အမျှ ကျွန်ုပ်တို့လည်း လေ့လာနေရမည်။",
-    "စာဖတ်ခြင်းသည် အသိပညာကို တိုးပွားစေသော အကောင်းဆုံး အလေ့အကျင့်ဖြစ်သည်။",
-    "ကြိုးစားသူတိုင်းအတွက် အောင်မြင်မှုဆိုတာ တစ်နေ့နေ့မှာ ရောက်လာမှာပါ။"
+// Professional စာပိုဒ်များ (စကားလုံးများကို Space ဖြင့် သေချာခွဲထားသည်)
+const sampleParagraphs = [
+    "မြန်မာနိုင်ငံ သည် အရှေ့တောင် အာရှ တွင် တည်ရှိ သော နိုင်ငံ တစ်ခု ဖြစ်သည် ။ ကွန်ပျူတာ နည်းပညာ များ သည် ယနေ့ ခေတ် တွင် အလွန် အရေးပါ လာပြီ ဖြစ်သည် ။",
+    "ကြိုးစားမှု သည် အောင်မြင်ခြင်း ရဲ့ သော့ချက် ဖြစ်သည် ။ အချိန် ကို တန်ဖိုး ထားပြီး မိမိ ရဲ့ အရည်အချင်း ကို အမြဲတမ်း မြှင့်တင် နေသင့် သည် ။",
+    "ခေတ်မီ နည်းပညာ များ ကို အကျွမ်းတဝင် ရှိစေရန် အတွက် စာရိုက် အမြန်နှုန်း သည် လည်း မရှိမဖြစ် လိုအပ် သော ကျွမ်းကျင်မှု တစ်ခု ဖြစ်လာ သည် ။"
 ];
 
 let timeLeft = 60;
 let timer = null;
 let isTyping = false;
-let currentText = "";
-let previousCorrectChars = 0;
-let totalTypedChars = 0;
+let wordsArray = [];
+let wordElements = [];
+let currentWordIndex = 0;
+let correctWordsCount = 0;
+let totalKeystrokes = 0;
+let correctKeystrokes = 0;
 
-function loadNewText() {
-    const randomIndex = Math.floor(Math.random() * sampleTexts.length);
-    currentText = sampleTexts[randomIndex];
+// စာပိုဒ်အသစ် ပြင်ဆင်ခြင်း
+function initGame() {
+    const randomPara = sampleParagraphs[Math.floor(Math.random() * sampleParagraphs.length)];
+    wordsArray = randomPara.split(" "); // Space ဖြင့် စကားလုံးများ ခွဲထုတ်ခြင်း
     
-    // မြန်မာစာကို မခွဲတော့ဘဲ အတိုင်းပြမည် (Unicode မပျက်စေရန်)
-    textDisplay.innerText = currentText;
+    textDisplay.innerHTML = '';
+    wordElements = [];
+
+    // စကားလုံး တစ်လုံးချင်းစီကို Span ထဲထည့်ပြခြင်း
+    wordsArray.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.classList.add('word');
+        span.innerText = word;
+        textDisplay.appendChild(span);
+        wordElements.push(span);
+    });
+
+    currentWordIndex = 0;
+    wordElements[currentWordIndex].classList.add('active'); // ပထမဆုံး စကားလုံးကို Active လုပ်ထားမည်
     
     textInput.value = '';
-    textInput.classList.remove('error-input', 'correct-input');
+    textInput.disabled = false;
+    textInput.focus();
 }
 
 function startTimer() {
@@ -38,66 +54,71 @@ function startTimer() {
             if (timeLeft > 0) {
                 timeLeft--;
                 timeDisplay.innerText = timeLeft;
-                calculateStats();
+                calculateWPM();
             } else {
-                clearInterval(timer);
-                textInput.disabled = true;
+                endGame();
             }
         }, 1000);
     }
 }
 
-function calculateStats(currentCorrectChars = 0) {
-    const timeElapsed = (60 - timeLeft) / 60; 
-    const totalCorrect = previousCorrectChars + currentCorrectChars;
-
+function calculateWPM() {
+    const timeElapsed = (60 - timeLeft) / 60; // မိနစ်
     if (timeElapsed > 0) {
-        const wpm = Math.round((totalCorrect / 5) / timeElapsed);
+        // Professional WPM တွက်နည်း: (စုစုပေါင်း မှန်ကန်သော Keystrokes / ၅) / ကြာချိန်
+        const wpm = Math.round((correctKeystrokes / 5) / timeElapsed);
         wpmDisplay.innerText = wpm > 0 ? wpm : 0;
     }
 
-    if (totalTypedChars > 0) {
-        const accuracy = Math.round((totalCorrect / totalTypedChars) * 100);
-        accuracyDisplay.innerText = accuracy > 100 ? 100 : accuracy;
+    if (totalKeystrokes > 0) {
+        const accuracy = Math.round((correctKeystrokes / totalKeystrokes) * 100);
+        accuracyDisplay.innerText = accuracy + '%';
     }
 }
 
+function endGame() {
+    clearInterval(timer);
+    textInput.disabled = true;
+    textInput.value = 'အချိန်ပြည့်သွားပါပြီ...';
+}
+
+// User စာရိုက်သည့်အခါ အလုပ်လုပ်မည့် Logic
 textInput.addEventListener('input', (e) => {
     startTimer();
-    const typedText = textInput.value;
-    
-    // Backspace မဟုတ်ရင် ရိုက်လိုက်တဲ့ အကြိမ်ရေကို မှတ်မည်
-    if (e.inputType !== 'deleteContentBackward') {
-        totalTypedChars++; 
-    }
+    const currentWord = wordsArray[currentWordIndex];
+    const typedValue = textInput.value;
 
-    let currentCorrectChars = 0;
-    let isCorrectSoFar = true;
+    // Space bar နှိပ်လိုက်လျှင် (စကားလုံး တစ်လုံးပြီးသွားပြီဟု သတ်မှတ်မည်)
+    if (typedValue.endsWith(' ')) {
+        const typedWord = typedValue.trim();
+        totalKeystrokes += typedWord.length + 1; // Space ပါ ထည့်တွက်သည်
 
-    // ရိုက်ထားသလောက် မှန်/မမှန် စစ်ဆေးခြင်း
-    for (let i = 0; i < typedText.length; i++) {
-        if (typedText[i] === currentText[i] && isCorrectSoFar) {
-            currentCorrectChars++;
+        if (typedWord === currentWord) {
+            wordElements[currentWordIndex].classList.replace('active', 'correct');
+            correctWordsCount++;
+            correctKeystrokes += currentWord.length + 1;
         } else {
-            isCorrectSoFar = false;
+            wordElements[currentWordIndex].classList.replace('active', 'incorrect');
         }
-    }
 
-    // စာကြောင်းတစ်ကြောင်းလုံး အတိအကျ မှန်သွားလျှင် နောက်တစ်ကြောင်းပြောင်းမည်
-    if (typedText === currentText) {
-        previousCorrectChars += currentText.length;
-        calculateStats(0);
-        loadNewText();
-    } else if (isCorrectSoFar) {
-        // မှန်နေသရွေ့ Input Box ကို အစိမ်းနုရောင်ပြမည်
-        textInput.classList.remove('error-input');
-        textInput.classList.add('correct-input');
-        calculateStats(currentCorrectChars);
+        currentWordIndex++;
+        
+        // စာပိုဒ် ဆုံးသွားလျှင်
+        if (currentWordIndex >= wordsArray.length) {
+            endGame();
+            return;
+        }
+
+        // နောက်စကားလုံးသို့ ကူးမည်
+        wordElements[currentWordIndex].classList.add('active');
+        textInput.value = ''; // Input box ကို ရှင်းထုတ်မည်
     } else {
-        // တစ်လုံးမှားသွားတာနဲ့ Input Box ကို အနီနုရောင်ပြမည်
-        textInput.classList.remove('correct-input');
-        textInput.classList.add('error-input');
-        calculateStats(currentCorrectChars);
+        // Space မနှိပ်သေးဘဲ ရိုက်နေစဉ် မှန်/မမှန် စစ်ဆေးခြင်း (Live Feedback)
+        if (currentWord.startsWith(typedValue)) {
+            wordElements[currentWordIndex].classList.remove('error-highlight');
+        } else {
+            wordElements[currentWordIndex].classList.add('error-highlight');
+        }
     }
 });
 
@@ -105,17 +126,16 @@ restartBtn.addEventListener('click', () => {
     clearInterval(timer);
     timeLeft = 60;
     isTyping = false;
-    previousCorrectChars = 0;
-    totalTypedChars = 0;
+    correctWordsCount = 0;
+    totalKeystrokes = 0;
+    correctKeystrokes = 0;
     
     timeDisplay.innerText = timeLeft;
     wpmDisplay.innerText = 0;
-    accuracyDisplay.innerText = 100;
-    textInput.disabled = false;
-    textInput.focus();
-    textInput.classList.remove('error-input', 'correct-input');
+    accuracyDisplay.innerText = '100%';
     
-    loadNewText();
+    initGame();
 });
 
-loadNewText();
+// စတင်ခြင်း
+initGame();
