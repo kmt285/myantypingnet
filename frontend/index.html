@@ -3,77 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar Typing - Finger Guide</title>
+    <title>Myanmar Typing - Full Alphabet & Shift Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>စနစ်ကျသော မြန်မာလက်ကွက် အခြေခံ</h1>
+        <h1>မြန်မာလက်ကွက် အပြည့်အစုံ လေ့ကျင့်ရန်</h1>
         
         <div class="lesson-display">
             <span id="completed-text"></span>
             <span id="current-char">က</span>
-            <span id="upcoming-text"> ခ ဂ င စ ဆ</span>
+            <span id="upcoming-text"> ခ ဂ ဃ င</span>
         </div>
 
         <input type="text" id="hidden-input" autocomplete="off" autofocus placeholder="ဒီနေရာမှာ Click နှိပ်ပြီး စာစရိုက်ပါ...">
 
         <div class="keyboard" id="virtual-keyboard">
             <div class="key-row">
-                <kbd data-key="၁" data-finger="left-pinky">၁</kbd>
-                <kbd data-key="၂" data-finger="left-ring">၂</kbd>
-                <kbd data-key="၃" data-finger="left-middle">၃</kbd>
-                <kbd data-key="၄" data-finger="left-index">၄</kbd>
-                <kbd data-key="၅" data-finger="left-index">၅</kbd>
-                <kbd data-key="၆" data-finger="right-index">၆</kbd>
-                <kbd data-key="၇" data-finger="right-index">၇</kbd>
-                <kbd data-key="၈" data-finger="right-middle">၈</kbd>
-                <kbd data-key="၉" data-finger="right-ring">၉</kbd>
-                <kbd data-key="၀" data-finger="right-pinky">၀</kbd>
-                <kbd data-key="-" data-finger="right-pinky">-</kbd>
-                <kbd data-key="=" data-finger="right-pinky">=</kbd>
+                <kbd data-key="ဆ" data-shift="ဈ" data-finger="left-pinky" data-hand="left"><span class="shift-char">ဈ</span><span class="normal-char">ဆ</span></kbd>
+                <kbd data-key="တ" data-shift="ဝ" data-finger="left-ring" data-hand="left"><span class="shift-char">ဝ</span><span class="normal-char">တ</span></kbd>
+                <kbd data-key="န" data-shift="ဣ" data-finger="left-middle" data-hand="left"><span class="shift-char">ဣ</span><span class="normal-char">န</span></kbd>
+                <kbd data-key="မ" data-shift="၎" data-finger="left-index" data-hand="left"><span class="shift-char">၎</span><span class="normal-char">မ</span></kbd>
+                <kbd data-key="အ" data-shift="ဤ" data-finger="left-index" data-hand="left"><span class="shift-char">ဤ</span><span class="normal-char">အ</span></kbd>
+                <kbd data-key="ပ" data-shift="၌" data-finger="right-index" data-hand="right"><span class="shift-char">၌</span><span class="normal-char">ပ</span></kbd>
+                <kbd data-key="က" data-shift="ဥ" data-finger="right-index" data-hand="right"><span class="shift-char">ဥ</span><span class="normal-char">က</span></kbd>
+                <kbd data-key="င" data-shift="ဦ" data-finger="right-middle" data-hand="right"><span class="shift-char">ဦ</span><span class="normal-char">င</span></kbd>
+                <kbd data-key="သ" data-shift="ဿ" data-finger="right-ring" data-hand="right"><span class="shift-char">ဿ</span><span class="normal-char">သ</span></kbd>
+                <kbd data-key="စ" data-shift="ဏ" data-finger="right-pinky" data-hand="right"><span class="shift-char">ဏ</span><span class="normal-char">စ</span></kbd>
+                <kbd data-key="ဟ" data-shift="ဧ" data-finger="right-pinky" data-hand="right"><span class="shift-char">ဧ</span><span class="normal-char">ဟ</span></kbd>
+                <kbd data-key="ဪ" data-shift="ဎ" data-finger="right-pinky" data-hand="right"><span class="shift-char">ဎ</span><span class="normal-char">ဪ</span></kbd>
             </div>
             <div class="key-row">
-                <kbd data-key="ဆ" data-finger="left-pinky">ဆ</kbd>
-                <kbd data-key="တ" data-finger="left-ring">တ</kbd>
-                <kbd data-key="န" data-finger="left-middle">န</kbd>
-                <kbd data-key="မ" data-finger="left-index">မ</kbd>
-                <kbd data-key="အ" data-finger="left-index">အ</kbd>
-                <kbd data-key="ပ" data-finger="right-index">ပ</kbd>
-                <kbd data-key="က" data-finger="right-index">က</kbd>
-                <kbd data-key="င" data-finger="right-middle">င</kbd>
-                <kbd data-key="သ" data-finger="right-ring">သ</kbd>
-                <kbd data-key="စ" data-finger="right-pinky">စ</kbd>
-                <kbd data-key="ဟ" data-finger="right-pinky">ဟ</kbd>
-                <kbd data-key="ဪ" data-finger="right-pinky">ဪ</kbd>
+                <kbd data-key="ေ" data-shift="ဗ" data-finger="left-pinky" data-hand="left"><span class="shift-char">ဗ</span><span class="normal-char">ေ</span></kbd>
+                <kbd data-key="ျ" data-shift="ှ" data-finger="left-ring" data-hand="left"><span class="shift-char">ှ</span><span class="normal-char">ျ</span></kbd>
+                <kbd data-key="ိ" data-shift="ီ" data-finger="left-middle" data-hand="left"><span class="shift-char">ီ</span><span class="normal-char">ိ</span></kbd>
+                <kbd data-key="်" data-shift="္" data-finger="left-index" data-hand="left"><span class="shift-char">္</span><span class="normal-char">်</span></kbd>
+                <kbd data-key="ါ" data-finger="left-index" data-hand="left"><span class="shift-char"></span><span class="normal-char">ါ</span></kbd>
+                <kbd data-key="့" data-shift="ံ" data-finger="right-index" data-hand="right"><span class="shift-char">ံ</span><span class="normal-char">့</span></kbd>
+                <kbd data-key="ြ" data-shift="ဲ" data-finger="right-index" data-hand="right"><span class="shift-char">ဲ</span><span class="normal-char">ြ</span></kbd>
+                <kbd data-key="ု" data-shift="ဒ" data-finger="right-middle" data-hand="right"><span class="shift-char">ဒ</span><span class="normal-char">ု</span></kbd>
+                <kbd data-key="ူ" data-shift="ဓ" data-finger="right-ring" data-hand="right"><span class="shift-char">ဓ</span><span class="normal-char">ူ</span></kbd>
+                <kbd data-key="း" data-shift="ဂ" data-finger="right-pinky" data-hand="right"><span class="shift-char">ဂ</span><span class="normal-char">း</span></kbd>
+                <kbd data-key="ွ" data-shift="ဋ" data-finger="right-pinky" data-hand="right"><span class="shift-char">ဋ</span><span class="normal-char">ွ</span></kbd>
             </div>
             <div class="key-row">
-                <kbd data-key="ေ" data-finger="left-pinky">ေ</kbd>
-                <kbd data-key="ျ" data-finger="left-ring">ျ</kbd>
-                <kbd data-key="ိ" data-finger="left-middle">ိ</kbd>
-                <kbd data-key="်" data-finger="left-index">်</kbd>
-                <kbd data-key="ါ" data-finger="left-index">ါ</kbd>
-                <kbd data-key="့" data-finger="right-index">့</kbd>
-                <kbd data-key="ြ" data-finger="right-index">ြ</kbd>
-                <kbd data-key="ု" data-finger="right-middle">ု</kbd>
-                <kbd data-key="ူ" data-finger="right-ring">ူ</kbd>
-                <kbd data-key="း" data-finger="right-pinky">း</kbd>
-                <kbd data-key="ွ" data-finger="right-pinky">ွ</kbd>
+                <kbd id="left-shift" class="shift-key" data-finger="left-pinky">Shift</kbd>
+                <kbd data-key="ဖ" data-shift="ဇ" data-finger="left-pinky" data-hand="left"><span class="shift-char">ဇ</span><span class="normal-char">ဖ</span></kbd>
+                <kbd data-key="ထ" data-shift="ဌ" data-finger="left-ring" data-hand="left"><span class="shift-char">ဌ</span><span class="normal-char">ထ</span></kbd>
+                <kbd data-key="ခ" data-shift="ဃ" data-finger="left-middle" data-hand="left"><span class="shift-char">ဃ</span><span class="normal-char">ခ</span></kbd>
+                <kbd data-key="လ" data-shift="ဠ" data-finger="left-index" data-hand="left"><span class="shift-char">ဠ</span><span class="normal-char">လ</span></kbd>
+                <kbd data-key="ဘ" data-shift="ယ" data-finger="left-index" data-hand="left"><span class="shift-char">ယ</span><span class="normal-char">ဘ</span></kbd>
+                <kbd data-key="ည" data-shift="ဉ" data-finger="right-index" data-hand="right"><span class="shift-char">ဉ</span><span class="normal-char">ည</span></kbd>
+                <kbd data-key="ာ" data-finger="right-index" data-hand="right"><span class="shift-char"></span><span class="normal-char">ာ</span></kbd>
+                <kbd data-key="၊" data-shift="ဋ္ဌ" data-finger="right-middle" data-hand="right"><span class="shift-char">ဋ္ဌ</span><span class="normal-char">၊</span></kbd>
+                <kbd data-key="။" data-shift="ဍ" data-finger="right-ring" data-hand="right"><span class="shift-char">ဍ</span><span class="normal-char">။</span></kbd>
+                <kbd id="right-shift" class="shift-key" data-finger="right-pinky">Shift</kbd>
             </div>
             <div class="key-row">
-                <kbd data-key="ဖ" data-finger="left-pinky">ဖ</kbd>
-                <kbd data-key="ထ" data-finger="left-ring">ထ</kbd>
-                <kbd data-key="ခ" data-finger="left-middle">ခ</kbd>
-                <kbd data-key="လ" data-finger="left-index">လ</kbd>
-                <kbd data-key="ဘ" data-finger="left-index">ဘ</kbd>
-                <kbd data-key="ည" data-finger="right-index">ည</kbd>
-                <kbd data-key="ာ" data-finger="right-index">ာ</kbd>
-                <kbd data-key="၊" data-finger="right-middle">၊</kbd>
-                <kbd data-key="။" data-finger="right-ring">။</kbd>
-                <kbd data-key="၏" data-finger="right-pinky">၏</kbd>
-            </div>
-            <div class="key-row">
-                <kbd data-key=" " data-finger="thumb" class="space-key">Space</kbd>
+                <kbd data-key=" " class="space-key">Space</kbd>
             </div>
         </div>
 
