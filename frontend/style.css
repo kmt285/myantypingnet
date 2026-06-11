@@ -45,16 +45,8 @@ h1 {
     padding: 20px;
     background: #e9ecef;
     border-radius: 8px;
-    user-select: none; /* User Copy ကူးခြင်းမှ ကာကွယ်ရန် */
+    user-select: none; 
 }
-
-/* JavaScript မှ လှမ်းသုံးမည့် Class များ */
-.text-display span {
-    padding: 2px;
-    border-radius: 3px;
-}
-.correct { color: #28a745; }
-.incorrect { color: #dc3545; background-color: #f8d7da; }
 
 input {
     width: 100%;
@@ -64,11 +56,24 @@ input {
     border-radius: 8px;
     margin-bottom: 25px;
     outline: none;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
 }
 
 input:focus {
     border-color: #0d6efd;
+}
+
+/* အမှားအမှန်ပြသမည့် Input Design များ */
+input.correct-input {
+    background-color: #f0fdf4;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+input.error-input {
+    background-color: #fef2f2;
+    border-color: #ef4444;
+    color: #991b1b;
 }
 
 button {
