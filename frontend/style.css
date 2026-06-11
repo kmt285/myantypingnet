@@ -1,92 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif;
+    font-family: 'Pyidaungsu', 'Inter', sans-serif;
 }
 
 body {
+    background-color: #323437; /* Professional Dark Theme */
+    color: #d1d0c5;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f2f5;
 }
 
 .container {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 800px;
-    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 30px;
 }
 
-h1 {
-    margin-bottom: 30px;
-    color: #1a1a1a;
-}
-
-.stats {
+header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 1.8rem;
     font-weight: bold;
-    font-size: 1.2rem;
-    color: #4a4a4a;
+    color: #e2b714; /* Accent Color */
+}
+
+.stats-bar {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.stat-box .label {
+    font-size: 0.9rem;
+    color: #646669;
+}
+
+.stat-box .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e2b714;
 }
 
 .text-display {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-    text-align: left;
-    line-height: 1.8;
-    padding: 20px;
-    background: #e9ecef;
-    border-radius: 8px;
-    user-select: none; 
+    font-size: 1.8rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    user-select: none;
+}
+
+/* စကားလုံး တစ်လုံးချင်းစီအတွက် Design */
+.word {
+    color: #646669; /* မရိုက်ရသေးသော စာလုံးများ */
+    transition: color 0.1s ease;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.word.active {
+    color: #d1d0c5; /* လက်ရှိရိုက်နေသော စာလုံး */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid #e2b714;
+}
+
+.word.correct {
+    color: #d1d0c5; /* မှန်ကန်သွားသော စာလုံး */
+}
+
+.word.incorrect {
+    color: #ca4754; /* မှားသွားသော စာလုံး */
+    text-decoration: underline;
+    text-decoration-color: #ca4754;
+}
+
+.word.error-highlight {
+    background-color: rgba(202, 71, 84, 0.2); /* ရိုက်နေစဉ် မှားနေလျှင် နောက်ခံအနီပြမည် */
+}
+
+.input-wrapper {
+    margin-bottom: 40px;
 }
 
 input {
     width: 100%;
-    padding: 15px;
-    font-size: 1.3rem;
-    border: 2px solid #ced4da;
+    background-color: #2c2e31;
+    border: none;
+    padding: 18px 20px;
+    font-size: 1.4rem;
+    color: #d1d0c5;
     border-radius: 8px;
-    margin-bottom: 25px;
     outline: none;
-    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s;
 }
 
 input:focus {
-    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px #e2b714;
 }
 
-/* အမှားအမှန်ပြသမည့် Input Design များ */
-input.correct-input {
-    background-color: #f0fdf4;
-    border-color: #22c55e;
-    color: #166534;
-}
-
-input.error-input {
-    background-color: #fef2f2;
-    border-color: #ef4444;
-    color: #991b1b;
-}
-
-button {
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    background-color: #0d6efd;
-    color: white;
+.restart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    background: transparent;
+    color: #646669;
     border: none;
-    border-radius: 8px;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: color 0.2s;
 }
 
-button:hover {
-    background-color: #0b5ed7;
+.restart-btn:hover, .restart-btn:focus {
+    color: #d1d0c5;
+    outline: none;
 }
