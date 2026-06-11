@@ -3,41 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar Pro Typing</title>
+    <title>Myanmar Typing Basics</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo">မြန်မာလက်ကွက် Pro</div>
-            <div class="stats-bar">
-                <div class="stat-box">
-                    <span class="label">အချိန်</span>
-                    <span class="value" id="time">60</span>
-                </div>
-                <div class="stat-box">
-                    <span class="label">WPM</span>
-                    <span class="value" id="wpm">0</span>
-                </div>
-                <div class="stat-box">
-                    <span class="label">မှန်ကန်မှု</span>
-                    <span class="value" id="accuracy">100%</span>
-                </div>
-            </div>
-        </header>
+        <h1>မြန်မာလက်ကွက် အခြေခံ လေ့ကျင့်ရန်</h1>
+        
+        <div class="lesson-display">
+            <span id="completed-text"></span>
+            <span id="current-char">က</span>
+            <span id="upcoming-text"> ခ ဂ ဃ င</span>
+        </div>
 
-        <main>
-            <div class="text-display" id="text-display"></div>
-            
-            <div class="input-wrapper">
-                <input type="text" id="text-input" placeholder="အပေါ်က စာလုံးကို ရိုက်ပြီး Space bar နှိပ်ပါ..." autocomplete="off">
+        <input type="text" id="hidden-input" autocomplete="off" autofocus placeholder="ဒီနေရာမှာ Click နှိပ်ပြီး စာစရိုက်ပါ...">
+
+        <div class="keyboard" id="virtual-keyboard">
+            <div class="key-row">
+                <kbd data-key="ဆ">ဆ</kbd>
+                <kbd data-key="တ">တ</kbd>
+                <kbd data-key="န">န</kbd>
+                <kbd data-key="မ">မ</kbd>
+                <kbd data-key="အ">အ</kbd>
+                <kbd data-key="ပ">ပ</kbd>
+                <kbd data-key="က">က</kbd>
+                <kbd data-key="င">င</kbd>
+                <kbd data-key="သ">သ</kbd>
+                <kbd data-key="စ">စ</kbd>
+                <kbd data-key="ဟ">ဟ</kbd>
+                <kbd data-key="ဪ">ဪ</kbd>
             </div>
-            
-            <button id="restart-btn" class="restart-btn">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
-                ပြန်လည်စတင်ရန်
-            </button>
-        </main>
+            <div class="key-row">
+                <kbd data-key="ေ">ေ</kbd>
+                <kbd data-key="ျ">ျ</kbd>
+                <kbd data-key="ိ">ိ</kbd>
+                <kbd data-key="်">်</kbd>
+                <kbd data-key="ါ">ါ</kbd>
+                <kbd data-key="့">့</kbd>
+                <kbd data-key="ြ">ြ</kbd>
+                <kbd data-key="ု">ု</kbd>
+                <kbd data-key="ူ">ူ</kbd>
+                <kbd data-key="း">း</kbd>
+                <kbd data-key="ွ">ွ</kbd>
+            </div>
+            <div class="key-row">
+                <kbd data-key="ဖ">ဖ</kbd>
+                <kbd data-key="ထ">ထ</kbd>
+                <kbd data-key="ခ">ခ</kbd>
+                <kbd data-key="လ">လ</kbd>
+                <kbd data-key="ဘ">ဘ</kbd>
+                <kbd data-key="ည">ည</kbd>
+                <kbd data-key="ာ">ာ</kbd>
+                <kbd data-key="၊">၊</kbd>
+                <kbd data-key="။">။</kbd>
+                <kbd data-key="၏">၏</kbd>
+            </div>
+            <div class="key-row">
+                <kbd data-key=" " class="space-key">Space</kbd>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
