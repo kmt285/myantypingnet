@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar Typing Practice</title>
+    <title>Myanmar Pro Typing</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>မြန်မာလက်ကွက် လေ့ကျင့်ရန်</h1>
-        
-        <div class="stats">
-            <p>ကျန်ရှိချိန်: <span id="time">60</span>s</p>
-            <p>WPM: <span id="wpm">0</span></p>
-            <p>မှန်ကန်မှု: <span id="accuracy">100</span>%</p>
-        </div>
+        <header>
+            <div class="logo">မြန်မာလက်ကွက် Pro</div>
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <span class="label">အချိန်</span>
+                    <span class="value" id="time">60</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">WPM</span>
+                    <span class="value" id="wpm">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">မှန်ကန်မှု</span>
+                    <span class="value" id="accuracy">100%</span>
+                </div>
+            </div>
+        </header>
 
-        <div class="text-display" id="text-display">
-            စာသားများ ဤနေရာတွင် ပေါ်လာပါမည်...
-        </div>
-
-        <div class="input-area">
-            <input type="text" id="text-input" placeholder="အပေါ်ကစာသားကို ဤနေရာတွင် ရိုက်ပါ..." autofocus>
-        </div>
-
-        <button id="restart-btn">ပြန်စရန်</button>
+        <main>
+            <div class="text-display" id="text-display"></div>
+            
+            <div class="input-wrapper">
+                <input type="text" id="text-input" placeholder="အပေါ်က စာလုံးကို ရိုက်ပြီး Space bar နှိပ်ပါ..." autocomplete="off">
+            </div>
+            
+            <button id="restart-btn" class="restart-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                ပြန်လည်စတင်ရန်
+            </button>
+        </main>
     </div>
 
     <script src="script.js"></script>
