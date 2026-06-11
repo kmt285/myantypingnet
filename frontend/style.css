@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+}
+
+.text-display {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    text-align: left;
+    line-height: 1.8;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 8px;
+    user-select: none; /* User Copy ကူးခြင်းမှ ကာကွယ်ရန် */
+}
+
+/* JavaScript မှ လှမ်းသုံးမည့် Class များ */
+.text-display span {
+    padding: 2px;
+    border-radius: 3px;
+}
+.correct { color: #28a745; }
+.incorrect { color: #dc3545; background-color: #f8d7da; }
+
+input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.3rem;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #0d6efd;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0b5ed7;
+}
